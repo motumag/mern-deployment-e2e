@@ -132,7 +132,7 @@ nano /etc/nginx/sites-available/motumag
 
 ```
 location /api {
-        proxy_pass http://45.90.108.107:8800;
+        proxy_pass http://backendip:port;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -250,7 +250,7 @@ Let's make some server configuration
 ```
 server {
  listen 80;
- server_name safakkocaoglu.com www.safakkocaoglu.com;
+ server_name motumag.com www.motumag.com;
 
 location / {
  root /var/www/motumag/client;
@@ -266,9 +266,9 @@ location / {
 
 server {
   listen 80;
-  server_name api.safakkocaoglu.com;
+  server_name api.motumag.com;
   location / {
-    proxy_pass http://45.90.108.107:8800;
+    proxy_pass http://backendip:port;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection 'upgrade';
@@ -279,7 +279,7 @@ server {
 
 server {
   listen 80;
-  server_name admin.safakkocaoglu.com;
+  server_name admin.motumag.com;
   location / {
     root /var/www/motumag/admin;
     index  index.html index.htm;
